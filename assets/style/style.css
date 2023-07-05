@@ -1,0 +1,272 @@
+/* -------------------------------- CSS-RESET ------------------------------- */
+
+* {
+	user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+	padding: 0;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	text-decoration: none;
+}
+
+/* --------------------------------- GLOBAL --------------------------------- */
+
+@font-face {
+	font-family: 'SpecialElite-regular';
+	src: url(../fonts/SpecialElite-Regular.ttf);
+}
+:root {
+	--tileSize: 0px;
+	--mapWidth: 0px;
+	--mapHeight: 0px;
+	--userSize: calc(var(--tileSize) / 1.45);
+	--userTranslate: calc((var(--tileSize) - var(--userSize)) / 2);
+	--userX: 2;
+	--userY: 5;
+	--bonusHeartX: 4;
+	--bonusHeartY: 3;
+
+	--monsterGreenSize: calc(var(--tileSize) / 1.72);
+	--monsterGreenTranslate: calc((var(--tileSize) - var(--monsterGreenSize)) / 2);
+	--monster1X: 0;
+	--monster1Y: 0;
+	--monster2X: 0;
+	--monster2Y: 0;
+	--monster3X: 0;
+	--monster3Y: 0;
+	--monster4X: 0;
+	--monster4Y: 0;
+	--monster5X: 0;
+	--monster5Y: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	background-color: black;
+	cursor: crosshair;
+	transition: 0.2s;
+}
+.remove {
+	display: none !important;
+}
+
+/* ----------------------------------- MAP ---------------------------------- */
+
+.map-image {
+    max-height: 100vh;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.map {
+	width: var(--mapWidth);
+	height: var(--mapHeight);
+	position: relative;
+}
+.user {
+	position: absolute;
+	width: var(--userSize);
+	height: var(--userSize);
+	transform: translate(var(--userTranslate), var(--userTranslate));
+	background: rgb(151, 142, 142);
+
+	top: calc(var(--tileSize) * (var(--userY) - 1));
+	left: calc(var(--tileSize) * (var(--userX) - 1));
+	transition: 0.2s;
+	z-index: 10;
+}
+/* .cote-gauche {
+	background: url(../img/user/user-cote-gauche.png) center/cover;
+}
+.cote-droit {
+	background: url(../img/user/user-cote-droit.png) center/cover;
+}
+.dos {
+	background: url(../img/user/user-dos.png) center/cover;
+}
+.face {
+	background: url(../img/user/user-face.png) center/cover;
+} */
+#bonusHeart {
+	position: absolute;
+	background: url(../img/heart-full.png) center/cover;
+	width: var(--userSize);
+	height: var(--userSize);
+	transform: translate(var(--userTranslate), var(--userTranslate));
+
+	top: calc(var(--tileSize) * (var(--bonusHeartY) - 1));
+	left: calc(var(--tileSize) * (var(--bonusHeartX) - 1));
+}
+
+/* --------------------------------- TOP-MAP -------------------------------- */
+
+.top-map-container {
+	position: absolute;
+	bottom: calc(var(--tileSize) * 10.3);
+	left: 8px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.heart-container {
+	display: flex;
+	gap: 7px;
+}
+.heart {
+	width: 23px;
+	height: 23px;
+}
+.heart-full {
+	background: url(../img/heart-full.png) center/cover;
+}
+.heart-half {
+	background: url(../img/heart-half.png) center/cover;
+}
+.heart-empty {
+	background: url(../img/heart-empty.png) center/cover;
+}
+#step-level {
+	margin-top: 7px;
+	color: rgb(230, 230, 230);
+	font-family: 'SpecialElite-regular';
+	font-size: 1.8rem;
+}
+
+/* ----------------------------- GAME-OVER-CARD ----------------------------- */
+
+.game-over-card-container {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	backdrop-filter: blur(2px);
+	z-index: 20;
+}
+.game-over-card {
+	background: rgb(172, 107, 11);
+	padding: 40px 55px;
+	border-radius: 4px;
+	text-align: center;
+	border: 7px solid rgb(48, 27, 0);
+}
+.game-over-card h2 {
+	margin-top: 8px;
+	font-family: 'SpecialELite-regular';
+	text-transform: uppercase;
+	font-size: 3.55rem;
+}
+.game-over-card p {
+	margin-top: 4px;
+	font-family: 'SpecialElite-regular';
+	font-size: 1.15rem;
+	margin-bottom: 32px;
+}
+.button-game-over-container {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+}
+.button-game-over {
+	font-family: 'SpecialElite-regular';
+	font-size: 1.1rem;
+	background: none;
+	border: 2px solid rgb(97, 10, 10);
+	color: rgb(97, 10, 10);
+	width: 150px;
+	height: 35px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+.button-game-over:hover {
+	border-radius: 3px;
+	background: rgb(97, 10, 10);
+	color: rgb(228, 228, 228);
+	border: 2px solid transparent;
+}
+
+/* --------------------------------- MONSTER -------------------------------- */
+
+.monster-green {
+	position: absolute;
+	width: var(--monsterGreenSize);
+	height: var(--monsterGreenSize);
+	transform: translate(var(--monsterGreenTranslate), var(--monsterGreenTranslate));
+	background: rgb(5, 116, 5);
+	transition: 0.2s;
+}
+.monster-red {
+	position: absolute;
+	width: var(--userSize);
+	height: var(--userSize);
+	transform: translate(var(--userTranslate), var(--userTranslate));
+	background: rgb(167, 8, 8);
+	transition: 0.2s;
+}
+#monster1 {
+	top: calc(var(--tileSize) * (var(--monster1Y) - 1));
+	left: calc(var(--tileSize) * (var(--monster1X) - 1));
+}
+#monster2 {
+	top: calc(var(--tileSize) * (var(--monster2Y) - 1));
+	left: calc(var(--tileSize) * (var(--monster2X) - 1));
+}
+#monster3 {
+	top: calc(var(--tileSize) * (var(--monster3Y) - 1));
+	left: calc(var(--tileSize) * (var(--monster3X) - 1));
+}
+#monster4 {
+	top: calc(var(--tileSize) * (var(--monster4Y) - 1));
+	left: calc(var(--tileSize) * (var(--monster4X) - 1));
+}
+#monster5 {
+	top: calc(var(--tileSize) * (var(--monster5Y) - 1));
+	left: calc(var(--tileSize) * (var(--monster5X) - 1));
+}

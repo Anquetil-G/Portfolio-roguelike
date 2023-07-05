@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+<body>
+    <img src="./assets/img/True Capture HD cutout.png" class="map-image">
+    <div class="map">
+        <div class="top-map-container">
+            <div class="heart-container">
+                <div id="heart1" class="heart-full heart"></div>
+                <div id="heart2" class="heart-full heart"></div>
+                <div id="heart3" class="heart-full heart"></div>
+                <div id="heart4" class="heart-full heart"></div>
+                <div id="heart5" class="heart-full heart"></div>
+            </div>
+            <p id="step-level">1</p>
+        </div>
+        <div class="user"></div>
+        <div id="monster1" class="remove monster-green"></div>
+        <div id="monster2" class="remove monster-green"></div>
+        <div id="monster4" class="remove monster-red"></div>
+        <div id="monster5" class="remove monster-red"></div>
+        <div id="bonusHeart" class="remove"></div>
+    </div>
+    <div class="game-over-card-container remove">
+        <div class="game-over-card">
+            <h2>Game over</h2>
+            <p id="stepGameOver">You return to the bottom of the dungeon.</p>
+            <div class="button-game-over-container">
+                <a href="./index.html"><button id="retry-button" class="button-game-over">Retry</button></a>
+                <button id="exit-button" class="button-game-over">Exit</button>
+            </div>
+        </div>
+    </div>
+    <script src="./javascript/index.js"></script>
+</body>
+</html>
